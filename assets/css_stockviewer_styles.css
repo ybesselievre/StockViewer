@@ -1,0 +1,322 @@
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Banner
+- Modal
+- Tabs
+- Main Dashboard Tab
+- Measurement Tab
+- Tables/Dropdown
+- Containers
+- Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+#app-container * {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #ffffff;
+    color: #f3f5f4;
+    font-family: "Monocode", sans-serif;
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw !important;
+    overflow-x: hidden;
+    margin: 0;
+    --banner-height:6em;
+    --sidebar-width:13em;
+    --chart-height: calc( (100vh - var(--banner-height) - 2em - 50px - 10px) );
+  }
+  
+  #big-app-container {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .banner {
+    height: var(--banner-height);
+    background-color: #212a30;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    min-width: 1250px;
+  }
+  
+  #banner-text {
+    min-width: 800px;
+  }
+  .banner h5 {
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-align:center
+  }
+  
+  .banner h6 {
+    font-family: 'Monocode', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    text-align:center
+  }
+  
+  #shutdown-button {
+    background-color: rgb(239,123,91);
+    border-color: rgb(239,123,91);
+  }
+  
+  #shutdown-button:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(239, 91, 91);
+    border-color: rgb(239, 91, 91);
+  }
+  
+  .banner button {
+    margin-right: 2rem;
+    height: 3rem;
+    background-color:rgb(0, 129, 80)
+  }
+  
+  
+  #banner-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .banner button:hover {
+    color: rgb(239,123,91);
+    border-color: rgb(239,123,91);
+  }
+  
+  #imgbox {
+    min-width:13em
+  }
+  .banner Img {
+    height: 6rem;
+    margin: 0px 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /*Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1005; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #212a30d0; /* Fallback color */
+  }
+  
+  /* Modal Content/Box */
+  .markdown-container {
+    width: 60vw;
+    margin: 10% auto;
+    padding: 15px 15px;
+    font-family: 'Monocode', sans-serif;
+    background-color: rgb(2, 68, 42);
+  }
+  
+  .close-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+  }
+  
+  .closeButton {
+    color:#fff;
+    padding: 0 15px;
+    font-weight: normal;
+    float: right;
+    height: 100%;
+    border: none;
+  }
+  
+  .closeButton:hover {
+    color: rgb(0, 171, 142);
+  }
+  
+  .shutdownButton {
+    color:#fff;
+    background-color :rgb(239,123,91);
+    padding: 0 15px;
+    font-weight: normal;
+    float: left;
+    height: 100%;
+    border: none;
+  }
+  
+  .shutdownButton:hover {
+    color: rgb(0, 171, 142);
+  }
+  
+  /* App shell
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  .shell {
+    position: absolute;
+    left: 0;
+    top:0;
+  }
+  
+  /* Sidebar Nav
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .nav-sidebar {
+      position: relative;
+      font-family: "Monocode", sans-serif;
+      font-weight: bold;
+      top: 0;
+      left: 0;
+      width: var(--sidebar-width);
+      height: calc(100vh - var(--banner-height));
+      background-color: #212a30;
+  }
+  
+  .nav-pills .nav-link {
+    color: #fff;
+    background-color: #212a30;
+    margin: calc(25vh - var(--banner-height)/4 - 80px) 0;
+  }
+  
+  .nav-pills .nav-link.active {
+    color: #fff;
+    background-color: rgb(0, 145, 90);
+  }
+  
+  
+  /* Container
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .app-container {
+    position: static;
+    background: #212a30;
+    margin-top: calc(var(--banner-height) + 1rem);
+    margin-left: calc(var(--sidebar-width) + 1rem);
+    width: calc(100vw - var(--sidebar-width) - 2rem);
+    height: calc(100vh - var(--banner-height) - 2rem);
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  
+  #home-container {
+    text-align: center;
+    padding: 6em 6em;
+  }
+  
+  .chart-panel {
+    min-height:  var(--chart-height);
+    min-width: 600px;
+    max-width: calc(100vw - var(--sidebar-width) - 2rem);
+    z-index: 4;
+  }
+  
+  .chart-panel-graph {
+    height: calc( var(--chart-height) - 40px);
+  }
+  
+  .section-banner {
+    background-color: rgb(33, 42, 48);
+    text-align: center;
+    font-family: "Monocode";
+    padding: 0px;
+    height: 20px;
+    box-shadow: 0px 2px 2px -2px;
+    border-bottom: 1px solid rgb(61 100 98);
+    letter-spacing: 3px;
+    font-size: 14px;
+  }
+  
+  /* Tabs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+  
+  .stocks-content {
+    position:relative;
+    top:10px;
+  }
+  
+  /* Loading Spinner */
+  .loading-spinner {
+    position:absolute;
+    top:50vh;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    * {
+      scrollbar-width: auto;
+      scrollbar-color: #54a07f #ffffff;
+    }
+  
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+      width: 12px;
+    }
+  
+    *::-webkit-scrollbar-track {
+      background: #ffffff;
+    }
+  
+    *::-webkit-scrollbar-thumb {
+      background-color: #54a07f;
+      border-radius: 10px;
+      border: 3px solid #ffffff;
+    }
+  
+  /*
+    ##Device = Most of the Smartphones Mobiles / ipad (Portrait)
+    */
+  @media only screen and (max-width: 400px) {
+  
+    body {
+      font-size: 1.3rem;
+    }
+  
+    #big-app-container {
+      padding: 1rem;
+    }
+  
+    .banner {
+      flex-direction: column-reverse;
+      padding: 1rem 0.5rem;
+    }
+  
+    #banner-text {
+      text-align: center;
+    }
+  
+    .banner h5 {
+      font-size: 1.4rem;
+    }
+  
+    .banner h6 {
+      font-size: 1.3rem;
+    }
+  
+    #banner-logo button {
+      display: none;
+    }
+  
+    .banner Img {
+      height: 3rem;
+      margin: 1rem;
+    }
+  
+    #app-container {
+      height: auto;
+    }
+  }
